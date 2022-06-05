@@ -4,8 +4,6 @@ import Expenses from "./components/Expenses";
 import CreateExpense from "./components/CreateExpense";
 
 function App(props) {
-
-
   const expenses = [
     {
       id: "ejejwe",
@@ -15,16 +13,14 @@ function App(props) {
     },
   ];
 
-
-  const addExpenseHandler =(expense)=>{
-    console.log("App.js => " , expenses)
-  }
+  const addExpenseHandler = (expense) => {
+    console.log("App.js => ", expenses);
+  };
 
   return (
     <div className="App">
-      <CreateExpense onAddExpense = {addExpenseHandler} />
+      <CreateExpense onAddExpense={addExpenseHandler} />
       <Expenses data={expenses} />
-
     </div>
   );
 

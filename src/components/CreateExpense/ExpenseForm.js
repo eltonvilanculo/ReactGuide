@@ -15,20 +15,18 @@ const ExpenseForm = (props) => {
   //       }
   //   });
 
-  const submitHandler= (event) => {
-      event.preventDefault();
-      // console.log(inputs)
-   
+  const submitHandler = (event) => {
+    event.preventDefault();
+    // console.log(inputs)
 
-      props.onSubmitData(inputs)
+    props.onSubmitData(inputs);
 
-     setInputs({
-         inputTitle:'',
-         inputAmount:'',
-         inputDate:'',
-       
-     })
-  }
+    setInputs({
+      inputTitle: "",
+      inputAmount: "",
+      inputDate: "",
+    });
+  };
 
   return (
     <div className="className='new-expense__controls">
