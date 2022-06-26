@@ -17,9 +17,13 @@ const ExpenseForm = (props) => {
 
   const submitHandler = (event) => {
     event.preventDefault();
-    // console.log(inputs)
+    console.log(inputs)
 
-    props.onSubmitData(inputs);
+    props.onSubmitData({
+      title:inputs.inputTitle,
+      amount:inputs.inputAmount,
+      date:new Date(inputs.inputDate),
+    });
 
     setInputs({
       inputTitle: "",
@@ -37,6 +41,7 @@ const ExpenseForm = (props) => {
           <input
             type="text"
             onChange={(event) => {
+           
               setInputs({
                 ...inputs,
                 inputTitle: event.target.value,
@@ -68,6 +73,7 @@ const ExpenseForm = (props) => {
             type="date"
             min="2022-01-01"
             onChange={(event) => {
+             
               setInputs({
                 ...inputs,
                 inputDate: event.target.value,

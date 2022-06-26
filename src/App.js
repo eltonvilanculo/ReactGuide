@@ -1,20 +1,35 @@
-import React from "react";
+import React,{useState} from "react";
 import "./App.css";
 import Expenses from "./components/Expenses";
 import CreateExpense from "./components/CreateExpense";
+const initExpenses = [
+  {
+    id: "ejejwe",
+    title: "Compra de automavel",
+    amount: 50,
+    date: new Date(2022, 6, 23),
+  },
+
+  {
+    id: "ejejwde",
+    title: "Agua",
+    amount: 50,
+    date: new Date(2022, 2, 22),
+  },
+];
 
 function App(props) {
-  const expenses = [
-    {
-      id: "ejejwe",
-      title: "Compra de automavel",
-      amount: 50,
-      date: new Date(2022, 2, 22),
-    },
-  ];
 
-  const addExpenseHandler = (expense) => {
-    console.log("App.js => ", expenses);
+  const [expenses,setExpenses] = useState(initExpenses)
+  const addExpenseHandler = (enteredData) => {
+   
+
+   
+    setExpenses((preExpenses)=>{
+      console.log('adding expense',enteredData)
+      return [enteredData, ...preExpenses];
+    })
+
   };
 
   return (

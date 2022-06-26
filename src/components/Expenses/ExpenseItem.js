@@ -8,6 +8,7 @@ function ExpenseItem(props) {
   const clickHandler = () => {
     setTitle("updated");
     console.log(title);
+   
   };
   return (
     <Card className="expense-item">
