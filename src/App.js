@@ -1,4 +1,4 @@
-import React,{useState} from "react";
+import React, { useState } from "react";
 import "./App.css";
 import Expenses from "./components/Expenses";
 import CreateExpense from "./components/CreateExpense";
@@ -19,23 +19,19 @@ const initExpenses = [
 ];
 
 function App(props) {
-
-  const [expenses,setExpenses] = useState(initExpenses)
+  const [expenses, setExpenses] = useState(initExpenses);
   const addExpenseHandler = (enteredData) => {
-   
-
-   
-    setExpenses((preExpenses)=>{
-      console.log('adding expense',enteredData)
+    setExpenses((preExpenses) => {
       return [enteredData, ...preExpenses];
-    })
-
+    });
   };
+
+ 
 
   return (
     <div className="App">
       <CreateExpense onAddExpense={addExpenseHandler} />
-      <Expenses data={expenses} />
+      <Expenses data={expenses}  />
     </div>
   );
 
