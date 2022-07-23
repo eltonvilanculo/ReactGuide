@@ -7,6 +7,8 @@ const ExpenseForm = (props) => {
     inputDate: "",
   });
 
+  const [showAddForm, setShowAddForm] = useState(false);
+
   //TODO : chamamos uma funcao caso o nosso estado actual dependa do anterior uma vez que react nao actualiza logo o valor de estado (aquilo que notei) se quisermos usar o estado anterior como em um counter
   //   setInputs((preState)=>{
   //      return {
@@ -17,12 +19,11 @@ const ExpenseForm = (props) => {
 
   const submitHandler = (event) => {
     event.preventDefault();
-    console.log(inputs)
 
     props.onSubmitData({
-      title:inputs.inputTitle,
-      amount:inputs.inputAmount,
-      date:new Date(inputs.inputDate),
+      title: inputs.inputTitle,
+      amount: inputs.inputAmount,
+      date: new Date(inputs.inputDate),
     });
 
     setInputs({
@@ -32,8 +33,17 @@ const ExpenseForm = (props) => {
     });
   };
 
-  return (
-    <div className="className='new-expense__controls">
+  const callFormHandler = ()=>{
+    setShowAddForm(true);
+  }
+  let content = (
+    <div>
+      <button type="submit" onClick={callFormHandler}>Add Expense</button>
+    </div>
+  );
+
+  if (showAddForm) {
+    content = (
       <form onSubmit={submitHandler}>
         <div className="new-expense__control">
           <label>Title</label>
@@ -41,7 +51,6 @@ const ExpenseForm = (props) => {
           <input
             type="text"
             onChange={(event) => {
-           
               setInputs({
                 ...inputs,
                 inputTitle: event.target.value,
@@ -73,7 +82,6 @@ const ExpenseForm = (props) => {
             type="date"
             min="2022-01-01"
             onChange={(event) => {
-             
               setInputs({
                 ...inputs,
                 inputDate: event.target.value,
@@ -82,12 +90,15 @@ const ExpenseForm = (props) => {
             value={inputs.inputDate}
           />
         </div>
+     
         <div className="new-expense__actions">
+        <button type="submit" className=".new-expense-cancel"  onClick={()=>setShowAddForm(false)}>Cancel</button>
           <button type="submit">Add Expense</button>
         </div>
       </form>
-    </div>
-  );
+    );
+  }
+  return <div className="className='new-expense__controls">{content}</div>;
 };
 
 export default ExpenseForm;
